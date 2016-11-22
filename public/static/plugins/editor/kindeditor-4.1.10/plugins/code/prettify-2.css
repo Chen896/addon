@@ -1,0 +1,50 @@
+.pln{color:#f0f8f2}
+@media screen{
+	.str{color:#e3dd5e}
+	.kwd{color:#74d6f1}
+	.com{color:#686a5d}
+	.typ{color:#f0f8f2}
+	.lit{color:#f0f8f2}
+	.pun,.opn,.clo{color:#f0f8f2}
+	.tag{color:#d93573}
+	.atn{color:#d93573}
+	.atv{color:#e3dd5e}
+	.dec,.var{color:#606}
+	.fun{color:red}
+}
+@media print,projection{
+	.str{color:#060}
+	.kwd{color:#006;font-weight:bold}
+	.com{color:#600;font-style:italic}
+	.typ{color:#404;font-weight:bold}
+	.lit{color:#044}
+	.pun,.opn,.clo{color:#440}
+	.tag{color:#006;font-weight:bold}
+	.atn{color:#404}.atv{color:#060}
+}
+
+ol.linenums{margin: 0 0 0 0;color:#686a5d;white-space: normal; list-style: outside decimal;background:#272822;}
+
+li.L0,li.L1,li.L2,li.L3,li.L4,li.L5,li.L6,li.L7,li.L8,li.L9{
+
+	border-left:1px dotted #686a5d;
+	padding:0 0 0 8px;
+	line-height:23px;
+	background-color:#272822;
+	text-indent: 0;
+}
+
+/*2016-11-17 16:38 兼容xmp*/
+xmp{ margin:0; padding:0; }
+
+pre.prettyprint {
+	background: #272822;
+	position: relative;
+	border: 1px solid #D1D7DC;
+	padding-left: 8px;
+	font-size: 15px;
+	display: block;
+	font-family: "Consolas","Î¢ÈíÑÅºÚ";
+	white-space: normal;
+	word-wrap: break-word;
+}

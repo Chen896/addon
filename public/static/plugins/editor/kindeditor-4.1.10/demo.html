@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Kindeditor Demo</title>
+</head>
+<body>
+    <!-- 1.显示编辑器的位置 -->
+    <div>
+        <textarea id="editor_id" name="content" style="width:700px;height:300px;">
+            &lt;strong&gt;HTML内容&lt;/strong&gt;
+        </textarea>
+    </div>
+
+    <div style="margin:20px;">
+        <button onclick="getEditorData()">获取内容</button>
+    </div>
+
+
+    <!-- 2.引入资源 -->
+    <script charset="utf-8" src="./kindeditor-min.js"></script>
+    <script charset="utf-8" src="./lang/zh_CN.js"></script>
+
+    <!-- 3.实例化编辑器 -->
+    <script>
+        //4.直接实例化
+            // KindEditor.ready(function(K) {
+            //     window.editor = K.create('#editor_id');
+            // });
+
+        //5.带参数实例化
+            //关闭过滤模式，保留所有HTML标签
+            //KindEditor.options.filterMode = false;  //为什么有些标签被过滤？
+
+            KindEditor.ready(function(K) {
+                window.editor = K.create('#editor_id', {
+                    //resizeType : 2,  //2或1或0，2时可以拖动改变宽度和高度，1时只能改变高度，0时不能拖动。
+                    uploadJson : '../php/upload_json.php',  //上传文件
+                    fileManagerJson : '../php/file_manager_json.php',  //浏览远程图片
+                    allowFileManager : true   //true时显示浏览远程服务器按钮
+                });
+            });
+
+        //6.取得编辑器内容
+            function getEditorData() {
+                //return window.editor.html();
+
+                var html = window.editor.html();
+                console.log(html);
+                alert(html);
+            }
+
+
+    </script>
+</body>
+</html>

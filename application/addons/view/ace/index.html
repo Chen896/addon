@@ -1,0 +1,110 @@
+{extend name="Ace:ace-base" /}
+
+<!-- 网站标题 -->
+{block name="title"}
+    <title>Ace 后台管理系统</title>
+{/block}
+
+<!-- extend css文件 -->
+{block name="style"}
+    <style type="text/css">
+        /*---滚动条默认显示样式--*/
+        ::-webkit-scrollbar-thumb{ background-color:#9ce1f5; border-radius:10px; height:50px; }
+        ::-webkit-scrollbar-thumb:hover{ background-color:#9ce1f5; height:50px; }
+        ::-webkit-scrollbar{ width:12px; height:8px; }
+        ::-webkit-scrollbar-track-piece{ background-color:#fff; }
+
+        html{ overflow:hidden; }
+        .page-content{ /*border:1px solid blue;*/ padding:0; }
+        .iframe-content{ border:1px solid pink; /*margin-left:20px;*/  }
+        .iframe-content iframe{ height:100%; width:100%; overflow-x:hidden; }
+    </style>
+{/block}
+
+<!-- 导航菜单 -->
+{block name="menu"}
+    <ul class="nav nav-list">
+        {volist name="menu" id="vo" key="i"}
+            {if condition="!isset($vo.child)"}
+                <li class="active">
+                    <a href="{$vo.url}" target="iframe-box">
+                        <i class="{$vo.icon}"></i>
+                        <span class="menu-text">{$vo.name}</span>
+                    </a>
+                </li>
+            {else /}
+                <li>
+                    <a href="#" class="dropdown-toggle">
+                        <i class="{$vo.icon}"></i>
+                        <span class="menu-text">{$vo.name}</span>
+
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu">
+                        {volist name="vo['child']" id="v" key="j"}
+                            {if condition="!isset($v.child)"}
+                                <li>
+                                    <a href="{$v.url}" target="iframe-box">
+                                        <i class="icon-double-angle-right"></i>
+                                        {$v.name}
+                                    </a>
+                                </li>
+                            {else /}
+                                <li>
+                                    <a href="#" class="dropdown-toggle">
+                                        <i class="icon-double-angle-right"></i>
+                                        {$v.name}
+                                        <b class="arrow icon-angle-down"></b>
+                                    </a>
+
+                                    <ul class="submenu">
+                                        {volist name="v.child" id="v2"}
+                                            <li>
+                                                <a href="{$v2.url}" target="iframe-box">
+                                                    <i class="{$v2.icon}"></i>
+                                                    {$v2.name}
+                                                </a>
+                                            </li>
+                                        {/volist}<!-- 三级菜单 -->
+
+                                    </ul>
+                                </li>
+                            {/if}
+                        {/volist}<!-- 二级菜单 -->
+
+                    </ul>
+                </li>
+            {/if}
+        {/volist}<!-- 一级菜单 -->
+
+    </ul><!-- /导航菜单 -->
+{/block}
+
+<!-- iframe框架 -->
+{block name="iframe"}
+    <div class="iframe-content">
+        <iframe src="{:url('Bootstrap/formdemo')}" name="iframe-box" id="iframe-box" onload="iframeH()" frameborder="0"></iframe>
+    </div>
+{/block}
+
+<!-- extend js文件 -->
+{block name="script"}
+    <script type="text/javascript">
+        //var url = 'http://www.baidu.com';
+        //$('#iframe-box').attr('src', url);
+        // $("#sidebar ul li a").click(function() {
+        //     $("#sidebar ul li").removeClass("active");
+        //     $(this).parents("li").addClass("active");
+        // });
+
+        function iframeH() {
+            var t = $("#iframe-box").offset().top, c_h = $(window).height();
+            $("#iframe-box").height(c_h - t);
+        }
+        window.onresize = function() {
+            iframeH();
+        }
+
+    </script>
+{/block}
+

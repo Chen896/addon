@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	 <title>Prettify实现代码高亮</title>
+	<!-- <script src="./cht/JQuery.js"></script>-->
+	<script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>
+	<style>
+        .pln{color:#000}
+        @media screen{.str{color:#080}.kwd{color:#008}.com{color:#800}.typ{color:#606}.lit{color:#066}.pun,.opn,.clo{color:#660}.tag{color:#008}.atn{color:#606}.atv{color:#080}.dec,.var{color:#606}.fun{color:red}}
+        @media print,projection{.str{color:#060}.kwd{color:#006;font-weight:bold}.com{color:#600;font-style:italic}.typ{color:#404;font-weight:bold}.lit{color:#044}.pun,.opn,.clo{color:#440}.tag{color:#006;font-weight:bold}.atn{color:#404}.atv{color:#060}}
+        pre.prettyprint{background: #E2D1D1; padding:2px;border:1px solid #888}ol.linenums{margin-top:0;margin-bottom:0}li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8{list-style-type:none}li.L1,li.L3,li.L5,li.L7,li.L9{background:#eee}
+    </style>
+</head>
+<body>
+	<pre>
+		$(window).load(function(){
+		    $("pre").addClass("prettyprint");
+		    prettyPrint();
+		})
+	</pre>
+	<pre>
+        代码高亮参考kindeditor-4.1.10/php/demo.php
+    </pre>
+
+<script>
+	window.onload = function(){
+		var pre = document.getElementsByTagName('pre');
+		for(var i=0, len=pre.length; i<len; i++){
+            pre[i].className = 'prettyprint';
+			// pre[i].className = 'prettyprint linenums';  //添加行号
+		}
+		prettyPrint();
+	}
+</script>
+</body>
+</html>

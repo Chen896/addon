@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    {block name="title"}{/block}<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <meta name="keywords" content="Bootstrap中文" />
+    <meta name="description" content="Bootstrap插件" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- basic styles -->
+    <link rel="stylesheet" href="__PLUGINS__/ace/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PLUGINS__/ace/css/font-awesome.min.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="__PLUGINS__/ace/css/ace.min.css" />
+    <link rel="stylesheet" href="__PLUGINS__/ace/css/ace-skins.min.css" />
+
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="__PLUGINS__/ace/css/font-awesome-ie7.min.css" />
+        <link rel="stylesheet" href="__PLUGINS__/ace/css/ace-ie.min.css" />
+    <![endif]-->
+
+    <!-- ace settings handler -->
+    <script src="__PLUGINS__/ace/js/ace-extra.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="__PLUGINS__/ace/js/html5shiv.js"></script>
+        <script src="__PLUGINS__/ace/js/respond.min.js"></script>
+    <![endif]-->
+
+    {block name="style"}{/block}<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+</head>
+<body>
+
+    <div class="navbar navbar-default" id="navbar">
+        <script type="text/javascript">
+            try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+        </script>
+
+        <div class="navbar-container" id="navbar-container">
+            <div class="navbar-header pull-left">
+                <a href="#" class="navbar-brand">
+                    <small>
+                        <i class="icon-leaf"></i>
+                        Ace 后台管理系统
+                    </small>
+                </a><!-- /.brand -->
+            </div><!-- /.navbar-header -->
+
+            {include file="ace/ace-navbar" /}<!-- ++++++++++++++++++++++通知栏++++++++++++++++++++++++++++ -->
+        </div><!-- /.container -->
+    </div>
+
+
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+        </script>
+
+        <div class="main-container-inner">
+            <a class="menu-toggler" id="menu-toggler" href="#">
+                <span class="menu-text"></span>
+            </a>
+
+            <div class="sidebar" id="sidebar">
+                <script type="text/javascript">
+                    try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+                </script>
+
+                <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                    <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                        <button class="btn btn-success"><i class="icon-signal"></i></button>
+                        <button class="btn btn-info"><i class="icon-pencil"></i></button>
+                        <button class="btn btn-warning"><i class="icon-group"></i></button>
+                        <button class="btn btn-danger"><i class="icon-cogs"></i></button>
+                    </div>
+
+                    <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                        <span class="btn btn-success"></span>
+                        <span class="btn btn-info"></span>
+                        <span class="btn btn-warning"></span>
+                        <span class="btn btn-danger"></span>
+                    </div>
+                </div><!-- #sidebar-shortcuts -->
+
+                {block name="menu"}{/block}<!-- +++++++++++++++++++++++++导航菜单+++++++++++++++++++++++++ -->
+
+                <div class="sidebar-collapse" id="sidebar-collapse">
+                    <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+                </div>
+
+                <script type="text/javascript">
+                    try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+                </script>
+            </div>
+
+            <div class="main-content">
+                <!-- 导航栏 -->
+                <div class="breadcrumbs" id="breadcrumbs">
+                    <script type="text/javascript">
+                        try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                    </script>
+
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="icon-home home-icon"></i>
+                            <a href="#">后台首页</a>
+                        </li>
+
+                        <li>
+                            <a href="#">表格</a>
+                        </li>
+                        <li class="active">风格一</li>
+                    </ul><!-- .breadcrumb -->
+
+                    <div class="nav-search" id="nav-search">
+                        <form class="form-search">
+                            <span class="input-icon">
+                                <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                                <i class="icon-search nav-search-icon"></i>
+                            </span>
+                        </form>
+                    </div><!-- #nav-search -->
+                </div>
+
+
+
+                <!-- 主内容区域 -->
+                <div class="page-content">
+                    <!-- <div class="row">
+                        <div class="col-xs-12"> -->
+                            <!-- PAGE CONTENT BEGINS -->
+                                {block name="iframe"}{/block}<!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+                            <!-- PAGE CONTENT ENDS -->
+                        <!-- </div>
+                    </div> -->
+                </div><!-- /.page-content -->
+            </div><!-- /.main-content -->
+
+
+            {include file="ace/ace-setting" /}<!-- ++++++++++++++++++++++++自定义样式++++++++++++++++++++++++++ -->
+        </div><!-- /.main-container-inner -->
+    </div><!-- /.main-container -->
+
+
+    <!-- basic scripts -->
+
+    <!--[if !IE]> -->
+        <script src="__PLUGINS__/ace/js/jquery-2.0.3.min.js"></script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+        <script src="__PLUGINS__/ace/js/jquery-1.10.2.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+        if("ontouchend" in document) document.write("<script src='__PLUGINS__/ace/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+    </script>
+    <script src="__PLUGINS__/ace/js/bootstrap.min.js"></script>
+    <script src="__PLUGINS__/ace/js/typeahead-bs2.min.js"></script>
+
+    <!-- ace scripts -->
+    <script src="__PLUGINS__/ace/js/ace-elements.min.js"></script>
+    <script src="__PLUGINS__/ace/js/ace.min.js"></script>
+
+    {block name="script"}{/block}<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+</body>
+</html>

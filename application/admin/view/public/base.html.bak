@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CMS-后台管理</title>
+    <link rel="stylesheet" type="text/css" href="__BOOTSTRAP__/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/admin.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+    <script type="text/javascript" src="__BOOTSTRAP__/js/bootstrap.min.js"></script>
+    {/*1.模版继承--样式*/}
+    {block name="style"}{/block}
+</head>
+<body class="a-fixed">
+    <!-- 头部 -->
+    <div class="a-header">
+        logo
+        <span class="col-lg-1 pull-right"><a href="{:url('Index/logout')}">退出</a></span>
+    </div>
+    <!-- /头部 -->
+
+    <!-- 左侧导航菜单 -->
+    <div class="a-left">
+        <li><a href="{:url('Index/main')}" target="main">菜单导航</a></li>
+    </div>
+    <!-- /左侧导航菜单 -->
+
+    <!-- 右侧内容区域 -->
+    <div class="a-right">
+        <!-- 信息提示 -->
+        <div id="a-alert" class="alert alert-danger" style="display: none;">
+            <button class="close">&times;</button>
+            <div class="alert-content">这是信息提示内容</div>
+        </div>
+
+        <div id="content-wrapper">
+            <div id="content-header" class="clearfix">
+                <div class="pull-left">
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="{:url('Admin/Index/index')}">后台首页</a>
+                        </li>
+                        <li class="active">
+                            {php}$meta_title="系统";{/php}
+
+                            {if $meta_title}
+                                <span>{$meta_title}</span>
+                            {else/}
+                                <span>{:lang($request->controller().'_'.$request->action())}</span>
+                            {/if}
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div id="content-box">
+                {/*2.模版继承--内容*/}
+                {block name="content"}{/block}
+            </div>
+        </div>
+
+        <!-- 粘住底部 -->
+        <div class="a-push"></div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="a-footer">
+        <div class="copyright">
+            <div class="col-lg-9">感谢使用<a href="http://www.12345.net" target="_blank"> 一块乐网络 </a>CMS管理平台</div>
+            <div class="col-lg-3">Copyright © 2015 - 2016, 版权所有</div>
+        </div>
+    </div>
+    <!-- /右侧内容区域 -->
+
+<script type="text/javascript">
+    $("#a-alert .close").click(function(){
+        $(this).parent().hide();
+    });
+
+</script>
+{/*3.模版继承--JS*/}
+{block name="script"}{/block}
+</body>
+</html>

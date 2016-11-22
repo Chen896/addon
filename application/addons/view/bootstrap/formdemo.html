@@ -1,0 +1,139 @@
+{extend name="Ace:public" /}
+
+{block name="style"}
+
+{/block}
+
+{block name="content"}
+    <div class="main" style="margin:10px 20px;">
+        <h2>Bootstrap 表单Demo</h2><hr>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">表单控件</h3>
+            </div>
+
+            <form action="" method="post" enctype="multipart/form-data"
+                class="form-horizontal" role="form" style="margin:30px 0;">
+
+                <!--1 表单控件  -->
+                <div class="form-group">
+                    <!--1.1 .col-sm-* 定义<label> <div>元素的宽度 -->
+                    <label for="firstname" class="col-sm-1 control-label">名字</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" name="firstname" id="firstname" placeholder="请输入名字">
+                    </div>
+                    <!--1.2 自定义提示项 .help-block -->
+                    <span class="help-block">提示</span>
+                </div>
+
+                <!--2 上传文件，form属性（enctype="multipart/form-data"） -->
+                <div class="form-group">
+                    <label for="inputfile" class="col-sm-1 control-label">文件上传</label>
+                    <div class="col-sm-2">
+                        <input type="file" class="form-control" name="inputfile" id="inputfile">
+                    </div>
+                    <span class="help-block">提示</span>
+                </div>
+
+                <!--3 文本框 rows="3" -->
+                <div class="form-group">
+                    <label for="textarea" class="col-sm-1 control-label">文本框</label>
+                    <div class="col-sm-5">
+                        <textarea class="form-control" rows="3" name="textarea" id="textarea"></textarea>
+                    </div>
+                </div>
+
+                <!--4 单选框 -->
+                <div class="form-group">
+                    <label for="radios1" class="col-sm-1 control-label">单选框</label>
+                    <div class="col-sm-2">
+                        <label class="radio-inline">
+                            <input type="radio" name="radio" id="radios1" value="1" checked> 选项 1
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="radio" id="radios2" value="2"> 选项 2
+                        </label>
+                    </div>
+                </div>
+
+                <!--5 复选框 -->
+                <div class="form-group">
+                    <label for="box1" class="col-sm-1 control-label">复选框</label>
+                    <div class="col-sm-2">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="checkbox[]" id="box1" value="1" checked> 选项 1
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="checkbox[]" id="box2" value="2"> 选项 2
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="checkbox[]" id="box3" value="3"> 选项 3
+                        </label>
+                    </div>
+                </div>
+
+                <!--6 选择列表，给<select>元素添加multiple属性，展开选择框 -->
+                <div class="form-group">
+                    <label for="select" class="col-sm-1 control-label">选择列表</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" name="select" id="select">
+                            <option value="1">1</option>
+                            <option value="2" selected>2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <!--7 添加 disabled 属性 -+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++- -->
+                    <div class="form-group">
+                        <label for="disabledInput" class="col-sm-1 control-label">禁用</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="disabledInput"
+                            placeholder="该输入框禁止输入..." disabled>
+                        </div>
+                    </div>
+
+                    <!--8 添加.has-success -->
+                    <div class="form-group has-success">
+                        <label for="inputSuccess" class="col-sm-1 control-label">输入成功</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="inputSuccess">
+                        </div>
+                    </div>
+
+                    <!--9 静态控件 .form-control-static 定义<p>元素-->
+                    <div class="form-group">
+                        <label for="email" class="col-sm-1 control-label">Email</label>
+                        <div class="col-sm-2">
+                            <p class="form-control-static">email@example.com（静态控件）</p>
+                        </div>
+                        <span class="help-block">不可修改*-*</span>
+                    </div>
+
+                <!-- 列偏移 .col-sm-offset-1 -+++++++++++++++++++++++++++++++++++++++++++++++++++++++- -->
+                <div class="form-group">
+                    <div class="col-sm-offset-1 col-sm-2">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="readme" checked> 请记住我
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-1 col-sm-2">
+                        <button type="submit" class="btn btn-success">登录</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+{/block}
+
+{block name="script"}
+
+{/block}

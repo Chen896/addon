@@ -1,0 +1,94 @@
+{extend name="Ace:public" /}
+
+{block name="style"}
+    <link rel="stylesheet" href="__PUBLIC__/css/layicon/love.css" />
+{/block}
+
+{block name="content"}
+<div class="container main">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="m-bg">
+                <h1>Bootstrap 面包屑导航（Breadcrumbs）</h1>
+                <hr>
+                <p>面包屑导航（Breadcrumbs）是一种基于网站层次信息的显示方式。以博客为例，面包屑导航可以显示发布日期、类别或标签。它们表示当前页面在导航层次结构内的位置。</p>
+                <p>Bootstrap 中的面包屑导航（Breadcrumbs）是一个简单的带有 <b>.breadcrumb</b> class 的无序列表。分隔符会通过 CSS（bootstrap.min.css）中下面所示的 class 自动被添加：</p>
+                <pre>
+                    .breadcrumb > li + li:before {
+                        color: #CCCCCC;
+                        content: "/ ";
+                        padding: 0 5px;
+                    }
+                </pre>
+
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">2013</a></li>
+                    <li class="active">十一月</li>
+                </ol>
+
+                <div style="margin-top:50px;">
+                    <h2>Bootstrap 标签</h2>
+                    <hr>
+
+                    <span class="label label-default">默认标签</span>
+                    <span class="label label-primary">主要标签</span>
+                    <span class="label label-success">成功标签</span>
+                    <span class="label label-info">信息标签</span>
+                    <span class="label label-warning">警告标签</span>
+                    <span class="label label-danger">危险标签</span>
+                </div>
+
+
+                <div style="margin-top:50px;">
+                    <h2>Bootstrap 徽章</h2>
+                    <hr>
+
+                    <ul class="nav nav-pills">
+                       <li class="active"><a href="#">首页 <span class="badge">42</span></a></li>
+                       <li><a href="#">简介</a></li>
+                       <li><a href="#">消息 <span class="badge">3</span></a></li>
+                    </ul>
+                </div>
+
+                <div style="margin-top:50px;">
+                    <h2>Bootstrap 页面标题</h2>
+                    <hr>
+
+                    <div class="page-header">
+                       <h1>页面标题实例
+                          <small>子标题</small>
+                       </h1>
+                    </div>
+                    <p>这是一个示例文本。这是一个示例文本。这是一个示例文本。这是一个示例文本。这是一个示例文本。</p>
+                </div>
+
+                <div style="margin-top:50px;">
+                    <h2>Bootstrap 警告
+                        <small>添加关闭按钮，请使用 警告（Alerts） jQuery 插件。</small>
+                    </h2>
+                    <hr>
+
+                    <div class="alert alert-success">成功！很好地完成了提交。</div>
+
+                    <div class="alert alert-info alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                            &times;
+                        </button> 信息！请注意这个信息。
+                    </div>
+
+                    <div class="alert alert-danger">
+                        <a href="#" class="alert-link">错误！请进行一些更改。</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="script"}
+    <script src="__BOOTSTRAP__/js/bootstrap.min.js"></script>
+{/block}

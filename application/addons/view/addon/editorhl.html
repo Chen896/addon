@@ -1,0 +1,98 @@
+{extend name="Ace:public" /}
+
+{block name="style"}
+    <style type="text/css">
+        .col-sm-5{ padding: 0; margin-right:20px; }
+    </style>
+{/block}
+
+{block name="content"}
+    <div class="main" style="margin:10px 20px;">
+        <h2>富文本编辑器</h2><hr>
+
+        <!-- Kindeditor编辑器 -->
+        <div class="panel panel-info col-sm-5">
+            <div class="panel-heading">
+                <h3 class="panel-title">Kindeditor编辑器</h3>
+            </div>
+
+            <div class="kindeditor">
+                <!-- 1.编辑器位置 -->
+                <div style="margin:20px 12px;">
+                    <form action="" method="post">
+                        <textarea id="editor_id" name="content" style="width:670px; height:375px;">
+                            <pre class="prettyprint linenums lang-php">
+                            class Index extends Addons
+                            {
+                                public function index(){
+                                    return $this-&gt;fetch();
+                                }
+                            }</pre>
+                        </textarea>
+
+                        <button type="button" style="margin-top:10px;" onclick="getEditorData()">获取内容</button>
+                        <button type="submit" class="btn btn-success">提交内容</button>
+                    </form>
+
+                </div>
+
+                <!-- 2.引入资源、实例化 -->
+                <script src="__PLUGINS__/editor/kindeditor-4.1.10/kindeditor-min.js"></script>
+                <script src="__PLUGINS__/editor/kindeditor-4.1.10/lang/zh_CN.js"></script>
+
+                <link rel="stylesheet" href="__PLUGINS__/editor/kindeditor-4.1.10/plugins/code/prettify.css" />
+                <script src="__PLUGINS__/editor/kindeditor-4.1.10/plugins/code/prettify.js"></script>
+                <script type="text/javascript">
+                    KindEditor.options.filterMode = false; //关闭过滤模式，保留所有HTML标签
+
+                    KindEditor.ready(function(K) { //创建编辑器
+                        window.editor = K.create('#editor_id', {
+                            cssPath : '__PLUGINS__/editor/kindeditor-4.1.10/plugins/code/prettify.css',
+                        });
+
+                        prettyPrint();  //代码高亮
+                    });
+
+                    function getEditorData() {  //取得编辑器内容
+                        //return window.editor.html();
+                        var html = window.editor.html();
+                        alert(html);
+                        console.log(html);
+                    }
+
+                </script>
+
+                {if condition="isset($content)"}
+                    <!-- 向编辑器添加内容 -->
+                    <script type="text/javascript">
+                        document.getElementById('editor_id').value = `{$content}`;
+                    </script>
+                {/if}
+
+            </div>
+        </div>
+
+        <!-- 提交的内容 -->
+        <div class="panel panel-info col-sm-5">
+            <div class="panel-heading">
+                <h3 class="panel-title">提交的内容</h3>
+            </div>
+
+            <div class="kindeditor">
+                <!-- 1.编辑器位置 -->
+                <div style="margin:20px 12px; width:670px; height:400px;">
+                    {if condition="isset($content)"}
+                        {$content}
+                    {/if}
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+{/block}
+
+{block name="script"}
+
+{/block}

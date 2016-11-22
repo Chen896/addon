@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    {block name="title"}{/block}<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <meta name="keywords" content="Bootstrap中文" />
+    <meta name="description" content="Bootstrap插件" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- basic styles -->
+    <link rel="stylesheet" href="__BOOTSTRAP__/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PLUGINS__/ace/css/font-awesome.min.css" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="__PLUGINS__/ace/js/html5shiv.js"></script>
+        <script src="__PLUGINS__/ace/js/respond.min.js"></script>
+    <![endif]-->
+
+    {block name="style"}{/block}<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <style type="text/css">
+        .btn-scroll-up { display:none; border: 0; position: fixed; right: 2px; bottom: 2px; z-index: 11;
+            background-color: #5cb85c; color: #FFF!important; padding:5px 8px; }
+        .btn-scroll-up>i{ font-size:200%; }
+        .form-horizontal .form-group { margin:0 0 15px 0; }
+
+        /*======TODO===========*/
+        .footer-content {
+            line-height: 50px;
+            border-top: 3px double #E5E5E5;
+        }
+
+        html, body { height: 100%; margin: 0; }
+        .page-content { min-height: 100%; margin: 0 auto -50px; }
+        .footer-content, .push { height: 50px; }
+        .footer-content .foot{ height: 100%; text-align:center; }
+
+    </style>
+</head>
+<body>
+
+    <!-- 主内容区域 -->
+    <div class="page-content">
+        {block name="content"}{/block}<!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+
+        <div class="push"></div>
+    </div>
+
+    <!-- ======TODO=========== -->
+    <div class="footer-content">
+        <div class="foot bg-info">
+            <span class="small">Ace</span>
+            Application © 2013-2014
+        </div>
+    </div>
+    <!-- 返回顶部 -->
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm">
+        <i class="icon-double-angle-up"></i>
+    </a>
+
+
+    <!-- basic scripts -->
+    <!--[if !IE]> -->
+        <script src="__PLUGINS__/ace/js/jquery-2.0.3.min.js"></script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+        <script src="__PLUGINS__/ace/js/jquery-1.10.2.min.js"></script>
+    <![endif]-->
+
+    {block name="script"}{/block}<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <script type="text/javascript">
+        $(window).scroll(function(){
+            $(this).scrollTop() > 50 ? $("#btn-scroll-up").show() : $("#btn-scroll-up").hide();
+        });
+    </script>
+
+</body>
+</html>

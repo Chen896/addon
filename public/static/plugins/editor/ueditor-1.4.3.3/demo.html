@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ueditor Demo</title>
+    <!-- 1.引入资源 -->
+    <script src="ueditor.config.js"></script>
+    <script src="ueditor.all.min.js"> </script>
+    <script src="lang/zh-cn/zh-cn.js"></script>
+</head>
+<body>
+    <!-- 2.编辑器容器2016-11-16 18:10 -->
+    <div id="ueditorContainer" style="width:900px; height:300px"></div>
+
+    <div style="margin:20px;">
+        <button onclick="getContent()">获取内容</button>
+        <button onclick="getContentTxt()">纯文本内容</button>
+        <button onclick="hasContent()">判断是否有内容</button>
+    </div>
+
+    <div style="border:1px solid pink; width:78%; padding:0 10px;">
+        <h2 style="color:#cc4929;">配置说明</h2>
+        <pre>
+            1.前端配置项：
+                前端配置项只需要配置 serverUrl 参数，ueditor 1.4.2+ 起，推荐使用统一的请求路径，在你部署好前端代码后，你需要修改 ueditor.config.js 里的 serverUrl 参数，改成 URL + 'php/controller.php'
+
+            2.后端配置项：
+                后端配置项在 php/config.json 里配置，不同的上传有各自的配置项。
+
+            <span style="color:red;">备注：</span>新版 UEditor 的所有请求都是向 php/controller.php 发起，再通过它分发到其他 php 脚本执行，所有返回值都是有固定格式
+        </pre>
+    </div>
+
+
+    <!-- 3.实例化编辑器 -->
+    <script type="text/javascript">
+        //实例化
+        var ue = UE.getEditor('ueditorContainer');
+
+        //获取编辑器的文本
+        function getContent(){
+            var cc = ue.getContent();
+            alert(cc);
+        }
+        //获取纯文本
+        function getContentTxt(){
+            var cc = ue.getContentTxt();
+            alert(cc);
+        }
+        //判断是否有内容
+        function hasContent() {
+            var arr = [];
+            arr.push("判断结果为：");
+            arr.push(ue.hasContents());
+            alert(arr.join("\n"));
+        }
+    </script>
+</body>
+</html>
