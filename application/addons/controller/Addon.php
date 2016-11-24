@@ -26,47 +26,25 @@ class Addon extends Addons
     }
 
     /**
-     * 无限极分类
-     * @date 2016-11-21 15:26
-     */
-    static private function category(&$list, $pid=0, $level=0, $html='-- '){
-        static $tree = array();
-
-        foreach($list as $v){
-            if($v['pid'] == $pid){
-                $v['level'] = $level + 1;
-                $v['html'] = str_repeat($html, $level);
-                $tree[] = $v;
-
-                self::category($list, $v['id'], $v['level']);  //递归
-            }
-        }
-
-        return $tree;
-    }
-
-    /**
      * 添加分类
      * @date 2016-11-21 15:36
      */
-    public function fenlei(){
+    public function fenlei($name='', $sort=0, $path=0){
+        $model = model('addonCategory');
+
         if(IS_POST){
-            $data['name'] = input('post.name');
-            $data['path'] = input('post.path');
-            $data['sort'] = input('post.sort') ? input('post.sort') : 0;
-
-            if($pos = strrpos($data['path'], '-')){
-                $data['pid'] = substr($data['path'], $pos+1);
-            }else{
-                $data['pid'] = $data['path'];
+            if($name == ''){
+            //    return $this->error('请填写分类名称');
             }
+            $res = $model->addCategory($name, $sort, $path);
 
-            $id = Db::name('addon_category')->insertGetId($data);
-            $id ? $this->success('新增成功') : $this->error('新增失败');
+            // 获取模型的验证：错误信息方法是 $model->getError() --TODO-------------------------
+            $res ? $this->success('新增成功') : $this->error($model->getError());
 
         }else{
-            $list = Db::name('addon_category')->select();
-            $tree = $this->category($list);
+            // $list = Db::name('addon_category')->select();
+            // $tree = $model->category($list);
+            $tree = $model->getCategory();
 
             $this->assign('tree', $tree);
             return $this->fetch();
