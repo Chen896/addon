@@ -39,6 +39,7 @@ class Ace extends Addons
                         array('name'=>'文本编辑器', 'url'=>url('Addon/editor'), 'icon'=>'icon-leaf'),
                         array('name'=>'代码高亮', 'url'=>url('Addon/editorhl'), 'icon'=>'icon-leaf'),
                         array('name'=>'无限极分类', 'url'=>url('Addon/fenlei'), 'icon'=>'icon-leaf'),
+                        array('name'=>'文章列表', 'url'=>url('Addon/artlist'), 'icon'=>'icon-leaf'),
 
                     )),
 

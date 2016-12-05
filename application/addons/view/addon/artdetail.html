@@ -1,0 +1,31 @@
+{extend name="Ace:public" /}
+
+{block name="style"}
+    <link rel="stylesheet" href="__PLUGINS__/editor/kindeditor-4.1.10/plugins/code/prettify-3.css" />
+    <style type="text/css">
+        pre{ overflow-x:hidden; word-break:break-all; }
+    </style>
+{/block}
+
+{block name="content"}
+    <div class="main" style="margin:10px 20px; ">
+        <h2>文章详情</h2><hr>
+
+        <div class="panel panel-info  col-sm-9">
+            <div class="panel-heading">
+                <h3 class="panel-title">文章详情</h3>
+            </div>
+
+            <div>{$article.content}</div>
+
+        </div>
+    </div>
+
+{/block}
+
+{block name="script"}
+    <script src="__PLUGINS__/editor/kindeditor-4.1.10/plugins/code/prettify-3.js"></script>
+    <script type="text/javascript">
+        prettyPrint();  //代码高亮
+    </script>
+{/block}

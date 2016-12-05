@@ -1,0 +1,96 @@
+{extend name="Ace:public" /}
+
+{block name="style"}
+
+{/block}
+
+{block name="content"}
+    <div class="main" style="margin:10px 20px;">
+        <h2>新增文章</h2><hr>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">新增文章</h3>
+            </div>
+
+            <form action="" method="post" enctype="multipart/form-data"
+                class="form-horizontal" role="form" style="margin:30px 0;">
+
+                <div class="form-group">
+                    <label for="cid" class="col-sm-1 control-label">所属分类</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" name="cid" id="cid">
+                            <option value="">请选择分类</option>
+                            {if condition="$tree"}
+                                {volist name="tree" id="v"}
+                                    <option value="{$v.id}">{$v.html}{$v.name}</option>
+                                {/volist}
+                            {/if}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="title" class="col-sm-1 control-label">文章标题</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" name="title" id="title" placeholder="请输入标题">
+                    </div>
+                    <!-- 自定义提示项 .help-block -->
+                    <!-- <span class="help-block">提示</span> -->
+                </div>
+
+                <div class="form-group">
+                    <label for="content" class="col-sm-1 control-label">文章内容</label>
+                    <div class="col-sm-6">
+                        <textarea class="form-control" name="content" id="content"  style="width:670px; height:375px;"></textarea>
+                    </div>
+
+                    <!-- 2.引入资源、实例化 -->
+                        <script src="__PLUGINS__/editor/kindeditor-4.1.10/kindeditor-min.js"></script>
+                        <script src="__PLUGINS__/editor/kindeditor-4.1.10/lang/zh_CN.js"></script>
+
+                        <link rel="stylesheet" href="__PLUGINS__/editor/kindeditor-4.1.10/plugins/code/prettify.css" />
+                        <script src="__PLUGINS__/editor/kindeditor-4.1.10/plugins/code/prettify.js"></script>
+                        <script type="text/javascript">
+                            KindEditor.options.filterMode = false; //关闭过滤模式，保留所有HTML标签
+
+                            KindEditor.ready(function(K) { //创建编辑器
+                                window.editor = K.create('#content', {
+                                    cssPath : '__PLUGINS__/editor/kindeditor-4.1.10/plugins/code/prettify.css',
+                                });
+
+                                prettyPrint();  //代码高亮
+                            });
+
+                            function getEditorData() {  //取得编辑器内容
+                                //return window.editor.html();
+                                var html = window.editor.html();
+                                alert(html);
+                                console.log(html);
+                            }
+
+                        </script>
+                </div>
+
+                <div class="form-group">
+                    <label for="author" class="col-sm-1 control-label">作者</label>
+                    <div class="col-sm-1">
+                        <input type="text" class="form-control" name="author" id="author" value="Chen" placeholder="请输入作者">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-1 col-sm-2">
+                        <button type="submit" class="btn btn-success">确认提交</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+{/block}
+
+{block name="script"}
+
+{/block}

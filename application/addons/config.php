@@ -7,4 +7,6 @@ return [
         '__PLUGINS__' => __ROOT__.'/static/plugins',
         '__BOOTSTRAP__' => __ROOT__.'/static/plugins/bootstrap',
     ],
+
+
 ];

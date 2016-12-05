@@ -1,16 +1,19 @@
 <?php
 namespace app\common\model;
 
+/**
+ * 分类数据模型
+ * @date 2016-11-23 15:20
+ */
 class AddonCategory extends Base
 {
     /**
      * 添加分类模型（在controller中调用、在validate中定义验证规则）
-     * @date 2016-11-23 15:13
+     * @date 2016-11-23 15:23
      * @return  bool
      */
-    public function addCategory($name, $sort, $path){
+    public function addCategory($name, $path){
         $data['name'] = $name;
-        $data['sort'] = (int)$sort;  //整型
         $data['path'] = $path;
 
         if($pos = strrpos($path, '-')){
@@ -31,10 +34,10 @@ class AddonCategory extends Base
      */
     public function getCategory(){
         $prefix = config('database.prefix');  //数据库配置前缀
-        $data = $this->query("SELECT *,CONCAT(`path`,'-',`id`) as pp FROM {$prefix}addon_category ORDER BY pp, sort");
+        $data = $this->query("SELECT *,CONCAT(`path`,'-',`id`) as pp FROM {$prefix}addon_category ORDER BY pp");
 
         foreach($data as $k=>$v){
-            $data[$k]['html'] = str_repeat('　　', count(explode('-', $v['path'])));
+            $data[$k]['html'] = str_repeat('├─', count(explode('-', $v['path']))-1);
         }
 
         return $data;
