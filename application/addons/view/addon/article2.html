@@ -23,17 +23,17 @@
                             <option value="">请选择分类</option>
                             {if condition="$tree"}
                                 {volist name="tree" id="v"}
-                                    <option value="{$v.id}" {if condition="$v.id eq $article.cid"}selected{/if} >{$v.html}{$v.name}</option>
+                                    <option value="{$v.pp}" {if condition="$v.pp eq $article.cid"}selected{/if} >{$v.html}{$v.name}</option>
                                 {/volist}
                             {/if}
-                        </select><small>{$v.id}--{$article.cid}</small>
+                        </select>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="title" class="col-sm-1 control-label">文章标题</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" name="title" id="title" placeholder="请输入标题">
+                        <input type="text" class="form-control" name="title" id="title" value="{$article.title}" placeholder="请输入标题">
                     </div>
                     <!-- 自定义提示项 .help-block -->
                     <!-- <span class="help-block">提示</span> -->
@@ -42,7 +42,7 @@
                 <div class="form-group">
                     <label for="content" class="col-sm-1 control-label">文章内容</label>
                     <div class="col-sm-6">
-                        <textarea class="form-control" name="content" id="content"  style="width:670px; height:375px;"></textarea>
+                        <textarea class="form-control" name="content" id="content"  style="width:670px; height:375px;"> {$article.content} </textarea>
                     </div>
 
                     <!-- 2.引入资源、实例化 -->
@@ -75,7 +75,7 @@
                 <div class="form-group">
                     <label for="author" class="col-sm-1 control-label">作者</label>
                     <div class="col-sm-1">
-                        <input type="text" class="form-control" name="author" id="author" value="Chen" placeholder="请输入作者">
+                        <input type="text" class="form-control" name="author" id="author" value="{$article.author}" placeholder="请输入作者">
                     </div>
                 </div>
 

@@ -1,24 +1,50 @@
 {extend name="Ace:public" /}
 
 {block name="style"}
-    <link rel="stylesheet" href="__PLUGINS__/editor/kindeditor-4.1.10/plugins/code/prettify-3.css" />
+    <link rel="stylesheet" href="__PLUGINS__/editor/kindeditor-4.1.10/plugins/code/prettify-3.1.css" />
     <style type="text/css">
-        pre{ overflow-x:hidden; word-break:break-all; }
+        /*使pre的内容自动换行：pre-wrap保留空白符序列，但是正常地进行换行。*/
+        pre{ white-space:pre-wrap; word-wrap:break-word; font-size:14px;}
+
+        /*重置bootstrap样式*/
+        .col-sm-9, .col-sm-2{ padding: 0; }
+        .list-group-item{ background:none; border:none; border-bottom:1px solid #ddd;  }
+        .list-group-item>.badge { float: left; margin-right: 5px; }
+
+        .content{ padding: 10px 20px; }
     </style>
 {/block}
 
 {block name="content"}
     <div class="main" style="margin:10px 20px; ">
-        <h2>文章详情</h2><hr>
+        <h3>{$article.title}</h3><hr>
 
-        <div class="panel panel-info  col-sm-9">
+        <!-- 1.左侧文章详情 -->
+        <div class="panel panel-info col-sm-9">
             <div class="panel-heading">
-                <h3 class="panel-title">文章详情</h3>
+                <h3 class="panel-title">{$article.title}<small>（{:time_format($article.update_time)}）</small></h3>
             </div>
 
-            <div>{$article.content}</div>
-
+            <div class="content">{$article.content}</div>
         </div>
+
+        <!-- 2.右侧相关文章 -->
+        <div class="col-sm-2" style="margin-left:20px;">
+            <div class="panel-body breadcrumb">
+                相关文章
+            </div>
+
+            <div class="content">
+                {volist name="list" id="v" key="k"}
+                    {if condition="$v.id eq $id"}
+                        <a href="#" class="list-group-item active"><em class="badge">{$k}</em> {$v.title} </a>
+                    {else /}
+                        <a href="{:url('artdetail', array('id'=>$v.id))}" class="list-group-item"><em class="badge">{$k}</em>{$v.title}</a>
+                    {/if}
+                {/volist}
+            </div>
+        </div>
+
     </div>
 
 {/block}

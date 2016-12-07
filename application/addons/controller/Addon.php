@@ -3,6 +3,7 @@ namespace app\addons\controller;
 use app\common\controller\Addons;
 
 use think\Db;  //数据库模型
+use app\common\model\AddonContent;
 
 class Addon extends Addons
 {
@@ -79,14 +80,14 @@ class Addon extends Addons
     public function article2($id='', $cid='0', $title='', $content='', $author='Chen'){
         if(IS_POST){
             $model = model('addonContent');
-            $res = $model->editArticle($cid, $title, $content, $author);
+            $res = $model->editArticle($id, $cid, $title, $content, $author);
 
             $res ? $this->success('编辑成功') : $this->error($model->getError());
 
         }else{
             $tree = model('addonCategory')->getCategory();
             $article = model('AddonContent')->getArticle($id);
-dump($article);exit;
+
             $this->assign( array('tree'=>$tree, 'article'=>$article) );
             return $this->fetch();
         }
@@ -96,10 +97,20 @@ dump($article);exit;
      * 6.文章列表
      * @date 2016-11-25 15:31
      */
-    public function artlist(){
-        $list = Db::name('AddonContent')->where('1=1')->paginate(1);
+    public function artlist()
+    {
+        $cid = input('get.cid') ? input('get.cid'): '0';
+        $title = input('get.title') ? input('get.title'): '';
+        $tree = model('addonCategory')->getCategory();  //分类
+        //数组开头插入元素
+        array_unshift($tree, array('name'=>'显示全部', 'pp'=>'0', 'html'=>''));
 
-        $this->assign('list', $list);
+        $where['cid'] = ['like', $cid.'%'];  //字符开头
+        if($title) $where['title'] = ['like', '%'.$title.'%'];  //包含字符
+
+        $list = Db::name('AddonContent')->where($where)->paginate(10);
+
+        $this->assign(array('list'=>$list, 'cid'=>$cid, 'title'=>$title, 'tree'=>$tree));
         return $this->fetch();
     }
 
@@ -111,7 +122,11 @@ dump($article);exit;
         // $article = Db::name('AddonContentData')->where('cid='.$cid)->find();
         $article = model('AddonContent')->getArticle($id);
 
-        $this->assign('article', $article);
+        //相关文章
+        $cid = $article['cid'];
+        $list = Db::name('AddonContent')->field('id,title')->where('cid', $cid)/*->where('id','neq',$id)*/->limit(10)->select();
+
+        $this->assign(array('article'=>$article, 'list'=>$list, 'id'=>$id));
         return $this->fetch();
     }
 

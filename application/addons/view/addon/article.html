@@ -23,7 +23,7 @@
                             <option value="">请选择分类</option>
                             {if condition="$tree"}
                                 {volist name="tree" id="v"}
-                                    <option value="{$v.id}">{$v.html}{$v.name}</option>
+                                    <option value="{$v.pp}">{$v.html}{$v.name}</option>
                                 {/volist}
                             {/if}
                         </select>

@@ -8,7 +8,7 @@ class Base extends \think\Model{
 
 	protected $type = array(
 		'id'  => 'integer',
-		'cover_id'  => 'integer',
+		'uid'  => 'integer',
 	);
 
 	/**

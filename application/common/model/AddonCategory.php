@@ -37,7 +37,8 @@ class AddonCategory extends Base
         $data = $this->query("SELECT *,CONCAT(`path`,'-',`id`) as pp FROM {$prefix}addon_category ORDER BY pp");
 
         foreach($data as $k=>$v){
-            $data[$k]['html'] = str_repeat('├─', count(explode('-', $v['path']))-1);
+            $len = count(explode('-', $v['path'])) - 1;
+            $data[$k]['html'] = str_repeat('&nbsp;&nbsp;', $len).'├─ '.str_repeat('─ ', $len);
         }
 
         return $data;
