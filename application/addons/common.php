@@ -2,9 +2,9 @@
 // Addons模块的公共函数2016-12-06 11:07
 
 /**
- * 数据签名认证
- * @param  array  $data     被认证的数据
- * @return string           签名
+ * 获取分类名称
+ * @param  string  $path    文章分类cid
+ * @return string           分类名称
  */
 function getCategoryName($path){
     if($pos = strrpos($path, '-')){

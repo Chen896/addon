@@ -108,7 +108,7 @@ class Addon extends Addons
         $where['cid'] = ['like', $cid.'%'];  //字符开头
         if($title) $where['title'] = ['like', '%'.$title.'%'];  //包含字符
 
-        $list = Db::name('AddonContent')->where($where)->paginate(10);
+        $list = Db::name('AddonContent')->where($where)->order('id','desc')->paginate(10);
 
         $this->assign(array('list'=>$list, 'cid'=>$cid, 'title'=>$title, 'tree'=>$tree));
         return $this->fetch();

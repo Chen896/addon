@@ -45,6 +45,7 @@ class Ace extends Addons
 
                     array('name'=>'收藏夹', 'url'=>'#', 'icon'=>'icon-table', 'child'=>array(
                         array('name'=>'手册网', 'url'=>'http://shouce.ren', 'icon'=>'icon-leaf'),
+                        array('name'=>'菜鸟教程', 'url'=>'http://www.runoob.com/', 'icon'=>'icon-leaf'),
                         array('name'=>'百度', 'url'=>'http://baidu.com', 'icon'=>'icon-leaf'),
                         array('name'=>'一块乐', 'url'=>'http://12345.net', 'icon'=>'icon-pencil'),
                     )),
