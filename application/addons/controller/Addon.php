@@ -86,7 +86,7 @@ class Addon extends Addons
 
         }else{
             $tree = model('addonCategory')->getCategory();
-            $article = model('AddonContent')->getArticle($id);
+            $article = model('AddonContent')->getArticle($id); // htmlspecialchars() 保留HTML标签
 
             $this->assign( array('tree'=>$tree, 'article'=>$article) );
             return $this->fetch();
@@ -108,7 +108,7 @@ class Addon extends Addons
         $where['cid'] = ['like', $cid.'%'];  //字符开头
         if($title) $where['title'] = ['like', '%'.$title.'%'];  //包含字符
 
-        $list = Db::name('AddonContent')->where($where)->order('id','desc')->paginate(10);
+        $list = Db::name('AddonContent')->where($where)->order('id','desc')->paginate(20);
 
         $this->assign(array('list'=>$list, 'cid'=>$cid, 'title'=>$title, 'tree'=>$tree));
         return $this->fetch();
@@ -124,7 +124,7 @@ class Addon extends Addons
 
         //相关文章
         $cid = $article['cid'];
-        $list = Db::name('AddonContent')->field('id,title')->where('cid', $cid)/*->where('id','neq',$id)*/->limit(10)->select();
+        $list = Db::name('AddonContent')->field('id,title')->where('cid', $cid)/*->where('id','neq',$id)*/->limit(15)->select();
 
         $this->assign(array('article'=>$article, 'list'=>$list, 'id'=>$id));
         return $this->fetch();

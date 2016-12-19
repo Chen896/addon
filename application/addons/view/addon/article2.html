@@ -42,7 +42,10 @@
                 <div class="form-group">
                     <label for="content" class="col-sm-1 control-label">文章内容</label>
                     <div class="col-sm-6">
-                        <textarea class="form-control" name="content" id="content"  style="width:670px; height:375px;"> {$article.content} </textarea>
+                        <!-- <textarea class="form-control" name="content" id="content"  style="width:670px; height:375px;"> {$article.content} </textarea> -->
+
+                        <!-- 编辑：保留插入程序代码的 html 标签 2016-12-19 -->
+                        <textarea class="form-control" name="content" id="content"  style="width:670px; height:375px;"> {:htmlspecialchars($article.content)} </textarea>
                     </div>
 
                     <!-- 2.引入资源、实例化 -->
