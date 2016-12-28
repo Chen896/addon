@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>轩枫阁 – 前端开发 | web前端技术博客</title>
+    <meta name="description" content="轩枫阁，是专注于分享web前端开发技术" />
+    <meta name="keywords" content="轩枫阁,前端技术" />
+
+    <link rel="stylesheet" type="text/css" href="./css/style-index.css" />
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="js_header mod-header">
+        <div class="mod-header__progress"></div>
+        <div class="mod-header__wrap">
+            <h1 class="js_fly mod-header__logo">
+                <a href="http://www.xuanfengge.com">轩枫阁</a>
+            </h1>
+
+            <div class="js_menu mod-header__nav">
+                <ul id="menu-nav" class="menu">
+                    <li id="menu-item-19" class="menu-item-19"><a href="/">首页</a></li>
+                    <li id="menu-item-81" class="menu-item-81"><a href="/h5">移动前端</a></li>
+                    <li id="menu-item-9" class="menu-item-9"><a href="/web">Web前端</a></li>
+                    <li id="menu-item-12" class="menu-item-12"><a href="/skill">授人以渔</a></li>
+                    <li id="menu-item-13" class="menu-item-13"><a href="/ui">UI设计</a></li>
+                    <li id="menu-item-10" class="menu-item-10"><a href="/wordpress">WP视点</a></li>
+                    <li id="menu-item-68" class="menu-item-68"><a href="/record">朝花夕拾</a></li>
+                    <li id="menu-item-14" class="menu-item-14"><a href="/code">程序人生</a></li>
+                    <li id="menu-item-16" class="menu-item-16"><a href="/">关于&#038;留言</a></li>
+                </ul>
+            </div>
+
+            <div class="js_piano_nav_icon mod-header__music-icon" title="钢琴节奏">
+                <i></i><i></i><i></i><i></i><i></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner栏 -->
+    <section class="mod-banner" id="js_banner">
+        <a href="http://www.xuanfengge.com/nav" target="_blank" class="mod-banner__img banner_1" id="banner_img"></a>
+
+        <div class="mod-banner__navi">
+            <div class="js_banner_nav mod-banner_nav"></div>
+            <span class="mod-banner__nav-dot"><canvas id="dotCanvas"></canvas></span>
+        </div>
+
+        <div class="mod-banner__tool">
+            <span class="js_banner_prev mod-banner__tool-prev">
+                <span class="mod-banner__tool-white"></span>
+                <span class="mod-banner__tool-shadow"></span>
+            </span>
+            <span class="js_banner_next mod-banner__tool-next">
+                <span class="mod-banner__tool-white"></span>
+                <span class="mod-banner__tool-shadow"></span>
+            </span>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mod-footer">
+        <div class="mod-footer__content">Copyright &copy; 2016 <a href="http://www.xuanfengge.com" title="轩枫阁">轩枫阁</a> | 粤ICP备15049830号</div>
+
+        <div class="mod-footer_gradient"></div>
+        <a class="js_to_top mod-footer_top animated fadeInUp" href="javascript:;">返回顶部</a>
+    </footer>
+
+
+
+<script>window.blog = { is_home: '1', is_category: '', is_single: '', is_tag: '', is_search: '', is_local: 'false'}; /*钢琴曲*/var media = 'http://localhost/cht/Plugins_css/Nav-menu'; </script>
+<script src="./js/jquery.js"></script>
+<script src="./js/index.js"></script>
+<script src="./js/banner-effect.js"></script>
+<script>
+    var banner = new Banner({
+        banner: '#banner_img',
+        index: 0,
+        autoplay: 8000,
+        width: 1200,
+        height: 300,
+        images: [{
+            url: './banner/1.0bd56759.jpg',
+            link: 'http://www.xuanfengge.com/nav'
+        }, {
+            url: './banner/4.27ab97fe.jpg',
+            link: 'javascript:;'
+        }, {
+            url: './banner/6.c6b4ec87.jpg',
+            link: '/web/img'
+        }, {
+            url: './banner/5.840dc8de.jpg',
+            link: 'javascript:;'
+        }, {
+            url: './banner/2.4a62be5c.jpg',
+            link: 'http://www.xuanfengge.com/funny'
+        }, {
+            url: './banner/3.c7eafbfc.jpg',
+            link: 'http://www.xuanfengge.com/'
+        }],
+
+        preloadImages: true,
+        pagination: '.js_banner_nav',
+        paginationClick: true,
+        prevButton: '.js_banner_prev',
+        nextButton: '.js_banner_next',
+
+        Effects: { 'prev': 'turnEffect', 'next': 'boomEffect', 'navi': 'pageEffect' },
+    });
+</script>
+</body>
+</html>

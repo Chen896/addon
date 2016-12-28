@@ -1,79 +1,73 @@
-{// extend name="public/base"/ }
-{block name="style"}
-    <link rel="stylesheet" href="__BOOTSTRAP__/css/bootstrap.min.css">
+{extend name="public/base" /}
+{block name="title"}
+    {$meta_title}
 {/block}
 
-{block name="body"}
-    <div class="main-box clearfix">
-        <header class="main-box-header clearfix">
-            <div class="pull-left">
-                <h2>{$meta_title}</h2>
-            </div>
-        </header>
+{block name="style"}
 
-        <div class="main-box-body clearfix">
-            <form method="post" class="form form-horizontal">
-                {if !isset($info)}
-                    {assign name="info" value="" /}
-                {/if}
+{/block}
 
-                {if !empty($fieldGroup)}
-                    <div class="tabs-wrapper">
-                        <ul class="nav nav-tabs">
-                            {volist name="fieldGroup" id="vGroup"}
-                                <li {if $i eq 1}class="active"{/if}><a href="#tab{$key}" data-toggle="tab">{$key}</a></li>
-                            {/volist}
-                        </ul>
-                        <div class="tab-content">
-                            {volist name="fieldGroup" id="vGroup"}
-                            <div class="tab-pane fade {if condition="$i eq 1"}in active{/if}" id="tab{$key}">
-                                {volist name="vGroup" id="field"}
-                                    {if $field['type'] eq 'hidden'}
-                                        <input type="hidden" name="{$field['name']}" value="{$info[$field['name']]|default=''}"/>
-                                    {else/}
-                                        <div class="form-group">
-                                            <label class="col-lg-2 control-label">{$field['title']|htmlspecialchars}</label>
-                                            <div class="col-lg-10 col-sm-10">
-                                                {:widget('common/Form/show',array($field,$info))}
-                                                <div class="help-block">{$field['help']|default=''}</div>
-                                            </div>
-                                        </div>
-                                    {/if}
-                                {/volist}
-                            </div>
-                            {/volist}
-                        </div>
-                    </div>
-                {else/}
-                    {volist name="keyList" id="field"}
-                        {if $field['type'] eq 'hidden'}
-                            <input type="hidden" name="{$field['name']}" value="{$info[$field['name']]|default=''}"/>
-                        {else/}
-                            <div class="form-group">
-                                <label class="col-lg-2 control-label">{$field['title']|htmlspecialchars}</label>
-                                <div class="col-lg-10 col-sm-10">
-                                    {:widget('common/Form/show',array($field,$info))}
-                                    <div class="help-block">{$field['help']|default=''}</div>
-                                </div>
-                            </div>
-                        {/if}
-                    {/volist}
-                {/if}
+{block name="content"}
+    <!-- Banner栏 -->
+    <section class="mod-banner" id="js_banner">
+        <a href="http://www.xuanfengge.com/nav" target="_blank" class="mod-banner__img banner_1" id="banner_img"></a>
 
-                <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
-                        <input type="hidden" name="id" value="{$info['id']|default=''}">
-                        <button class="btn btn-success submit-btn ajax-post" type="submit" target-form="form-horizontal">确 定</button>
-                        <button class="btn btn-danger btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
-                    </div>
-                </div>
-
-            </form>
+        <div class="mod-banner__navi">
+            <div class="js_banner_nav mod-banner_nav"></div>
+            <span class="mod-banner__nav-dot"><canvas id="dotCanvas"></canvas></span>
         </div>
 
-    </div>
+        <div class="mod-banner__tool">
+            <span class="js_banner_prev mod-banner__tool-prev">
+                <span class="mod-banner__tool-white"></span>
+                <span class="mod-banner__tool-shadow"></span>
+            </span>
+            <span class="js_banner_next mod-banner__tool-next">
+                <span class="mod-banner__tool-white"></span>
+                <span class="mod-banner__tool-shadow"></span>
+            </span>
+        </div>
+    </section>
+
+
 {/block}
 
 {block name="script"}
-    <script type="text/javascript"></script>
+    <script src="__PUBLIC__/css/Nav-menu/js/banner-effect.js"></script>
+    <script type="text/javascript">
+        var banner = new Banner({
+            banner: '#banner_img',
+            index: 0,
+            autoplay: 8000,
+            width: 1200,
+            height: 300,
+            images: [{
+                url: media+'/banner/1.0bd56759.jpg',
+                link: 'http://www.xuanfengge.com/nav'
+            }, {
+                url: media+'/banner/4.27ab97fe.jpg',
+                link: 'javascript:;'
+            }, {
+                url: media+'/banner/6.c6b4ec87.jpg',
+                link: '/web/img'
+            }, {
+                url: media+'/banner/5.840dc8de.jpg',
+                link: 'javascript:;'
+            }, {
+                url: media+'/banner/2.4a62be5c.jpg',
+                link: 'http://www.xuanfengge.com/funny'
+            }, {
+                url: media+'/banner/3.c7eafbfc.jpg',
+                link: 'http://www.xuanfengge.com/'
+            }],
+
+            preloadImages: true,
+            pagination: '.js_banner_nav',
+            paginationClick: true,
+            prevButton: '.js_banner_prev',
+            nextButton: '.js_banner_next',
+
+            Effects: { 'prev': 'turnEffect', 'next': 'boomEffect', 'navi': 'pageEffect' },
+        });
+    </script>
 {/block}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>{block name="title"}{/block}</title><!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- basic styles -->
+    <link rel="stylesheet" href="__BOOTSTRAP__/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PLUGINS__/ace/css/font-awesome.min.css" />
+    <!-- Nav-menu -->
+    <link rel="stylesheet" href="__PUBLIC__/css/Nav-menu/css/style-index.css" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="__PLUGINS__/ace/js/html5shiv.js"></script>
+        <script src="__PLUGINS__/ace/js/respond.min.js"></script>
+    <![endif]-->
+
+    {block name="style"}{/block}<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <style type="text/css">
+        .form-horizontal .form-group { margin:0 0 15px 0; }
+
+        /*======TODO===========*/
+        .footer-content {
+            line-height: 80px;
+            border-top: 3px double #E5E5E5;
+        }
+
+        html, body { height: 100%; margin: 0; }
+        .page-content { min-height: 100%; margin: 0 auto -80px; }
+        .footer-content, .push { height: 80px; }
+        .footer-content .foot{ height: 100%; text-align:center; }
+
+    </style>
+</head>
+<body>
+
+    <!-- 主内容区域 -->
+    <div class="page-content">
+        <!-- 导航栏 -->
+        <header class="js_header mod-header">
+            <div class="mod-header__progress"></div>
+            <div class="mod-header__wrap">
+                <h1 class="js_fly mod-header__logo" style="margin:0;">
+                    <a href="http://www.xuanfengge.com">轩枫阁</a>
+                </h1>
+
+                <div class="js_menu mod-header__nav">
+                    <ul id="menu-nav" class="menu">
+                        {volist name="nav_menu" id="k"}
+                            <li id="menu-item-{$k.id}" class="menu-item-{$k.id}"><a href="{:url('index','id='. $k.id)}">{$k.name}</a></li>
+                        {/volist}
+                    </ul>
+                </div>
+
+                <div class="js_piano_nav_icon mod-header__music-icon" title="钢琴节奏">
+                    <i></i><i></i><i></i><i></i><i></i>
+                </div>
+            </div>
+        </header>
+
+        {block name="content"}{/block}<!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+
+
+        <div class="push"></div>
+    </div>
+
+    <!-- ======TODO=========== -->
+    <div class="footer-content mod-footer">
+        <div class="foot">
+            <div class="mod-footer__content">Copyright &copy; 2016 <a href="http://www.xuanfengge.com" title="轩枫阁">轩枫阁</a> | 粤ICP备15049830号</div>
+
+            <!-- <div class="mod-footer_gradient"></div> -->
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="mod-footer">
+        <a class="js_to_top mod-footer_top animated fadeInUp" href="javascript:;">返回顶部</a>
+    </footer>
+
+
+<!-- basic scripts -->
+<!--[if !IE]> -->
+    <script src="__PLUGINS__/ace/js/jquery-2.0.3.min.js"></script>
+<!-- <![endif]-->
+
+<!--[if IE]>
+    <script src="__PLUGINS__/ace/js/jquery-1.10.2.min.js"></script>
+<![endif]-->
+
+<!-- 导航栏2016-12-28 -->
+<script>window.blog = { is_home: '1', is_category: '', is_single: '', is_tag: '', is_search: '', is_local: 'false'}; /*钢琴曲*/var media = '__PUBLIC__/css/Nav-menu'; </script>
+<script src="__PUBLIC__/css/Nav-menu/js/index.js"></script>
+
+{block name="script"}{/block}<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+</body>
+</html>

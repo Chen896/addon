@@ -2,21 +2,15 @@
 namespace app\index\controller;
 use app\common\controller\Home;
 
-//use app\common\controller\Upload;
-
 class Index extends Home
 {
 
-    public function index(){
-        $upload = request()->ip();
+    public function index($id){
+        # $sid = input('get.id');  # url()函数路由静态化，不能用 input() 获取$_GET参数2016-12-28
 
-        $model = model('User');
-        $data = array(
-            'keyList' => $model->addfield
-        );
-
+        $data = array();
         $this->assign($data);
-        $this->setMeta("编辑用户");
+        $this->setMeta("技术文章");
 
         return $this->fetch();
     }

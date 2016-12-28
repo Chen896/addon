@@ -22,7 +22,10 @@ class Home extends Base{
 
 	//当前栏目导航
 	protected function setHoverNav(){
-		//dump($_SERVER['PHP_SELF']);
+		$path = db('Addon_category')->where('name', '技术文章')->find();
+		$list = db('Addon_category')->where('path', $path['path'].'-'.$path['id'])->select();
+
+		$this->assign('nav_menu', $list);
 	}
 
 	//设置SEO
