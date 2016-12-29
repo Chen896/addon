@@ -1,0 +1,65 @@
+{extend name="public/base" /}
+{block name="title"}
+    {$meta_title}
+{/block}
+
+{block name="style"}
+    <link rel="stylesheet" href="__PLUGINS__/editor/kindeditor-4.1.10/plugins/code/prettify-3.1.css" />
+    <style type="text/css">
+        /*使pre的内容自动换行：pre-wrap保留空白符序列，但是正常地进行换行。*/
+        pre{ white-space:pre-wrap; word-wrap:break-word; font-size:14px;}
+
+        /*重置bootstrap样式*/
+        .col-md-9, .col-md-3{ padding: 0; }
+        .col-md-3{ width: 22%; margin-left: 3%; padding: 0; }
+        .list-group-item{ background:none; border:none; border-bottom:1px solid #ddd;  }
+        .list-group-item>.badge { float: left; margin-right: 5px; }
+        .text-nowrap{ overflow: hidden; }
+
+        .content{ padding: 10px 20px; font-size:16px; font-family:"Microsoft Yahei",Simsun;     line-height: 1.5; }
+        .main{ max-width: 1200px; margin: 0 auto; }
+    </style>
+{/block}
+
+{block name="content"}
+    <div class="main">
+        <h3 style="font-size:22px; margin:15px 0; color:#666">
+            【{:getCategoryName($article.cid)}】{$article.title}
+        </h3>
+
+        <!-- 1.左侧文章详情 -->
+        <div class="panel panel-info col-md-9">
+            <div class="panel-heading">
+                <h3 class="panel-title">{$article.title}<small>（{:time_format($article.update_time)}）</small></h3>
+            </div>
+
+            <div class="content">{$article.content}</div>
+        </div>
+
+        <!-- 2.右侧相关文章 -->
+        <div class="col-md-3">
+            <div class="panel-body breadcrumb">
+                相关文章
+            </div>
+
+            <div class="content">
+                {volist name="list" id="v" key="k"}
+                    {if condition="$v.id eq $id"}
+                        <a href="#" class="list-group-item text-nowrap active" title="{$v.title}"><em class="badge">{$k}</em> {$v.title} </a>
+                    {else /}
+                        <a href="{:url('detail', array('id'=>$v.id))}" class="list-group-item text-nowrap" title="{$v.title}"><em class="badge">{$k}</em>{$v.title}</a>
+                    {/if}
+                {/volist}
+            </div>
+        </div>
+
+    </div>
+
+{/block}
+
+{block name="script"}
+    <script src="__PLUGINS__/editor/kindeditor-4.1.10/plugins/code/prettify-3.js"></script>
+    <script type="text/javascript">
+        prettyPrint();  //代码高亮
+    </script>
+{/block}

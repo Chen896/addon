@@ -4,13 +4,21 @@
 {/block}
 
 {block name="style"}
+    <style type="text/css">
+        .main-content{ max-width: 1200px; margin: 10px auto; }
+        .main-content .col-md-9, .main-content .col-md-3{ padding: 0; margin-bottom: 80px; }
+        .main-content .col-md-3{ width: 22%; margin-left: 3%; }
 
+        .list-group-item{ padding-top: 35px; }
+        .list-group-item .item-heading{ font-size: 22px; }
+        .list-group-item .item-text{ text-indent: 2em; font-size: 16px; }
+    </style>
 {/block}
 
 {block name="content"}
     <!-- Banner栏 -->
     <section class="mod-banner" id="js_banner">
-        <a href="http://www.xuanfengge.com/nav" target="_blank" class="mod-banner__img banner_1" id="banner_img"></a>
+        <a href="#" target="_blank" class="mod-banner__img banner_1" id="banner_img"></a>
 
         <div class="mod-banner__navi">
             <div class="js_banner_nav mod-banner_nav"></div>
@@ -29,7 +37,40 @@
         </div>
     </section>
 
+    <!-- 文章列表 -->
+    <div class="main-content">
+        <div class="panel panel-info col-md-9">
+            <div class="panel-heading">
+                <h3 class="panel-title">文章列表</h3>
+            </div>
 
+            <ul class="list-group">
+                {volist name="list" id="v" key="k"}
+                    <li class="list-group-item">
+                        <a class="item-heading" href="{:url('detail', array('id'=>$v.id))}">【{:getCategoryName($v.cid)}】{$v.title}</a>
+                        <p class="item-text">{$v.describe}</p>
+                    </li>
+                {/volist}
+
+                <div>{$list->render()}</div>
+            </ul>
+        </div>
+
+        <!-- 热门标签 -->
+        <div class="panel panel-info col-md-3">
+            <div class="panel-heading">
+                <h3 class="panel-title">相关标签</h3>
+            </div>
+
+            <ul class="list-group">
+                {volist name="label" id="v2"}
+                    <li class="list-group-item">
+                        <a href="{:url('index', array('id'=>$v2.id))}">{$v2.name}</a>
+                    </li>
+                {/volist}
+            </ul>
+        </div>
+    </div>
 {/block}
 
 {block name="script"}
