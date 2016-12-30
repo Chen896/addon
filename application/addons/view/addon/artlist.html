@@ -46,11 +46,10 @@
                     {volist name="list" id="v" key="k"}
                         <tr>
                             <td>{$k}</td>
-                            <td><a href="{:url('artdetail', array('id'=>$v.id))}">{$v.title}</a></td>
+                            <td><a href="{:url('index/index/detail', array('id'=>$v.id))}" target="_new">{$v.title}</a></td>
                             <td>{:getCategoryName($v.cid)}</td>
                             <td>{$v.describe}</td>
                             <td>
-                                <a class="btn btn-xs btn-success" href="{:url('artdetail', array('id'=>$v.id))}">详情 »</a> |
                                 <a class="btn btn-xs btn-info" href="{:url('article2', array('id'=>$v.id))}">编辑 »</a>
                             </td>
                         </tr>

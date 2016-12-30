@@ -14,7 +14,7 @@ class Index extends Home
 
         # 文章列表
         $where['cid'] = ['like', $path.'%'];  //字符开头
-        $list = db('AddonContent')->where($where)->order('id','desc')->paginate(20);
+        $list = db('AddonContent')->where($where)->order('id','desc')->paginate(20, false, ['query' => $this->param]);  // 保留 get 搜索参数2016-12-30
 
         # 相关标签
         $label = db('AddonCategory')->where('path', $path)->select();
